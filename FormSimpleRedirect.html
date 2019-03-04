@@ -1,0 +1,42 @@
+<html>
+<body>
+
+    <form method="POST" id="checkout" action="https://assetpayments.us/checkout/pay" accept-charset="utf-8">
+		<input type="hidden" name="data" id="data" value="" />
+        <input type="text" name="Email" id="Email" placeholder="Email" required />
+        <input type="text" name="Amount" id="Amount" placeholder="Amount" required />
+        <input type="text" name="Currency" id="Currency" placeholder="Currency" required />
+		<input type="button" value="Click me" onclick="process()">
+    </form>
+
+<script>
+function process() {
+       
+       function b64EncodeUnicode(str) {
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+                function toSolidBytes(match, p1) {
+                    return String.fromCharCode('0x' + p1);
+                }));
+        }
+
+        var send_data = {
+            'TemplateId': '19',
+            'CountryISO': 'UA',
+            'MerchantInternalOrderId': '12345',
+            'StatusURL': 'https://site.com/status',
+            'ReturnURL': 'https://site.com/return',
+            'Email': document.getElementById('Email').value,
+            'Amount': document.getElementById('Amount').value,
+            'Currency': document.getElementById('Currency').value,
+            'AssetPaymentsKey': '03e5515f-7cd8-49ce-9284-5d78ff1390d9',
+        };
+        var data = b64EncodeUnicode(JSON.stringify(send_data));
+        document.getElementById('data').value = data;
+        document.getElementById('checkout').submit();
+}
+
+    </script>
+
+
+</body>
+</html>
