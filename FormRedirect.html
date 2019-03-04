@@ -97,25 +97,26 @@ function process() {
         }
 
         var date = new Date();
-		var currentDate = date.toISOString().slice(0,10);
-		var currentTime = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+	var currentDate = date.toISOString().slice(0,10);
+	var currentTime = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 		
-		var send_data = {
-			//Mandatory fields
+	var send_data = {
+	    //Mandatory fields
             'TemplateId': '19',
             'CountryISO': 'UA',
             'MerchantInternalOrderId': currentDate + ' / ' + currentTime,
             'StatusURL': 'https://site.com/status',
             'ReturnURL': 'https://site.com/return',
-			'Email': document.getElementById('Email').value,
-			'Amount': document.getElementById('Amount').value,
+	    'Email': document.getElementById('Email').value,
+	    'Amount': document.getElementById('Amount').value,
             'Currency': document.getElementById('Currency').value,
             'AssetPaymentsKey': '03e5515f-7cd8-49ce-9284-5d78ff1390d9',
-			//Non mandatory fields
-			'FirstName': document.getElementById('FirstName').value,
-			'Phone': document.getElementById('Phone').value,			
+	
+	    //Non mandatory fields
+	    'FirstName': document.getElementById('FirstName').value,
+	    'Phone': document.getElementById('Phone').value,			
             'Address': document.getElementById('Address').value,
-			'CustomMerchantInfo': document.getElementById('CustomMerchantInfo').value,           
+	    'CustomMerchantInfo': document.getElementById('CustomMerchantInfo').value,           
         };
         var data = b64EncodeUnicode(JSON.stringify(send_data));
         document.getElementById('data').value = data;
@@ -123,7 +124,6 @@ function process() {
 }
 
     </script>
-
 
 </body>
 </html>
