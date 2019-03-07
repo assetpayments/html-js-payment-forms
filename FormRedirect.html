@@ -106,7 +106,7 @@ function process() {
             'CountryISO': 'UA',
             'MerchantInternalOrderId': currentDate + ' / ' + currentTime,
             'StatusURL': 'https://site.com/status',
-            'ReturnURL': 'https://site.com/return',
+            'ReturnURL': window.location.href,
 	    'Email': document.getElementById('Email').value,
 	    'Amount': document.getElementById('Amount').value,
             'Currency': document.getElementById('Currency').value,
