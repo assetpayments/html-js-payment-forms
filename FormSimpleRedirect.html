@@ -19,7 +19,8 @@ function process() {
                 }));
         }
 
-        var send_data = {
+        var processingIDs = []; //Leave empty to use all payment methods or specify IDs [1,2] and view order
+	var send_data = {
             'TemplateId': '19',
             'CountryISO': 'UA',
             'MerchantInternalOrderId': '12345',
@@ -30,6 +31,7 @@ function process() {
             'Currency': document.getElementById('Currency').value,
 	    'CustomMerchantInfo': 'FormSimpleRedirect',
             'AssetPaymentsKey': '0000-000000-00000-00000', //Paste your UserID here
+	    'AllowedProcessings': processingIDs,
         };
         var data = b64EncodeUnicode(JSON.stringify(send_data));
         document.getElementById('data').value = data;
