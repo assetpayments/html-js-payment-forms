@@ -100,6 +100,7 @@ function process() {
 	var currentDate = date.toISOString().slice(0,10);
 	var currentTime = date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
 		
+	var processingIDs = []; //Leave empty to use all payment methods or specify IDs [1,2] and view order
 	var send_data = {
 	    //Mandatory fields
             'TemplateId': '19',
@@ -112,6 +113,7 @@ function process() {
             'Currency': document.getElementById('Currency').value,
 	    'CustomMerchantInfo': 'FormRedirect',
             'AssetPaymentsKey': '0000-000000-00000-00000', //Paste your UserID here
+            'AllowedProcessings': processingIDs,
 	
 	    //Non mandatory fields
 	    'FirstName': document.getElementById('FirstName').value,
